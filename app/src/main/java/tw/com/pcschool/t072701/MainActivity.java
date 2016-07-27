@@ -15,10 +15,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                                MainActivity.this,
-                                android.R.layout.simple_list_item_1,
-                                str
-                                );
+                MainActivity.this,
+                android.R.layout.simple_list_item_1,
+                str
+        );
         ListView lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(adapter);
 
