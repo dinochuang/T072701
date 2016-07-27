@@ -18,17 +18,20 @@ public class MyAdapter extends BaseAdapter
     }
 
     @Override
-    public int getCount() {
-        return 5;
+    public int getCount()
+    {
+        return 7;
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(int position)
+    {
         return null;
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(int position)
+    {
         return 0;
     }
 
