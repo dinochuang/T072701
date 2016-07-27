@@ -1,10 +1,14 @@
 package tw.com.pcschool.t072701;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * Created by Student on 2016/7/27.
@@ -12,16 +16,16 @@ import android.widget.TextView;
 public class MyAdapter extends BaseAdapter
 {
     Context context;
-    String[] str;
-    public MyAdapter(Context c, String[] s)
+    ArrayList<Student> data;
+    public MyAdapter(Context c, ArrayList<Student> list)
     {
         context = c;
-        str = s;
+        data = list;
     }
 
     @Override
     public int getCount() {
-        return str.length;
+        return data.size();
     }
 
     @Override
@@ -36,9 +40,14 @@ public class MyAdapter extends BaseAdapter
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView tv = new TextView(context);
-        tv.setTextSize(30);
-        tv.setText(str[position]);
-        return tv;
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View v = inflater.inflate(R.layout.listitem, null);
+        ImageView img = (ImageView) v.findViewById(R.id.imageView);
+        img.setImageResource(data.get(position).photoid);
+        TextView tv1 = (TextView) v.findViewById(R.id.textView);
+        tv1.setText(data.get(position).name);
+        TextView tv2 = (TextView) v.findViewById(R.id.textView2);
+        tv2.setText(data.get(position).phone);
+        return v;
     }
 }
