@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Main3Activity extends AppCompatActivity {
     ListView lv3;
     ArrayList<Student> mylist;
-
+    MyAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,8 @@ public class Main3Activity extends AppCompatActivity {
         mylist.add(new Student(R.drawable.f2, "HH", "88222"));
         mylist.add(new Student(R.drawable.f3, "II", "99333"));
         lv3 = (ListView) findViewById(R.id.listView3);
-        MyAdapter adapter = new MyAdapter(Main3Activity.this, mylist);
+        adapter = new MyAdapter(Main3Activity.this, mylist);
+
         lv3.setAdapter(adapter);
 
 
