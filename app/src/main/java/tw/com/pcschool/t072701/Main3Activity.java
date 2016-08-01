@@ -24,6 +24,9 @@ public class Main3Activity extends AppCompatActivity {
         mylist.add(new Student(R.drawable.f1, "DD", "44111"));
         mylist.add(new Student(R.drawable.f2, "EE", "55222"));
         mylist.add(new Student(R.drawable.f3, "FF", "66333"));
+        mylist.add(new Student(R.drawable.f1, "GG", "77111"));
+        mylist.add(new Student(R.drawable.f2, "HH", "88222"));
+        mylist.add(new Student(R.drawable.f3, "II", "99333"));
         lv3 = (ListView) findViewById(R.id.listView3);
         MyAdapter adapter = new MyAdapter(Main3Activity.this, mylist);
         lv3.setAdapter(adapter);

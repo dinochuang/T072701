@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Text"
         android:id="@+id/textView" />
 
     <TextView
@@ -29,5 +29,11 @@
         android:layout_height="wrap_content"
         android:text="詳細資料"
         android:id="@+id/button" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ch"
+        android:id="@+id/checkBox" />
 
 </LinearLayout>
