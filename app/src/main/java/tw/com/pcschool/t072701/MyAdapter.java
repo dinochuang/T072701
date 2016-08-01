@@ -49,21 +49,41 @@ public class MyAdapter extends BaseAdapter
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         final int p = position;
 
         Log.d("2701", "Get View Position:" + p);
 
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(R.layout.listitem, null);
-        ImageView img = (ImageView) v.findViewById(R.id.imageView);
-        img.setImageResource(data.get(position).photoid);
-        final TextView tv1 = (TextView) v.findViewById(R.id.textView);
-        tv1.setText(data.get(position).name);
-        TextView tv2 = (TextView) v.findViewById(R.id.textView2);
-        tv2.setText(data.get(position).phone);
+        ViewHolder holder;
+        View v;
+        ImageView img;
+        final TextView tv1;
+        final TextView tv2;
+        Button btn;
+        CheckBox chk1;
+        if (convertView == null)
+        {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.listitem, null);
+            holder = new ViewHolder();
+            holder.img1 = (ImageView) convertView.findViewById(R.id.imageView);
+            holder.tv1 = (TextView) convertView.findViewById(R.id.textView);
+            holder.tv2 = (TextView) convertView.findViewById(R.id.textView2);
+            holder.btn1 = (Button) convertView.findViewById(R.id.button);
+            holder.chk1 = (CheckBox) convertView.findViewById(R.id.checkBox);
+            convertView.setTag(holder);
+        }
+        else
+        {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
-        Button btn = (Button) v.findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        holder.img1.setImageResource(data.get(position).photoid);
+        holder.tv1.setText(data.get(position).name);
+        holder.tv2.setText(data.get(position).phone);
+
+        holder.btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Toast.makeText(context, tv1.getText(),Toast.LENGTH_SHORT).show();
@@ -79,15 +99,24 @@ public class MyAdapter extends BaseAdapter
         });
 
 
-        CheckBox chk1 = (CheckBox) v.findViewById(R.id.checkBox);
-        chk1.setChecked(chk[p]);
-        chk1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        holder.chk1.setChecked(chk[p]);
+        holder.chk1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 chk[p] = isChecked;
             }
         });
 
-        return v;
+        return convertView;
+    }
+
+    static class ViewHolder
+    {
+        ImageView img1;
+        TextView tv1;
+        TextView tv2;
+        Button btn1;
+        CheckBox chk1;
     }
 }
