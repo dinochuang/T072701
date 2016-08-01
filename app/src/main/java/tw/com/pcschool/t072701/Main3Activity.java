@@ -26,7 +26,8 @@ public class Main3Activity extends AppCompatActivity {
         lv3 = (ListView) findViewById(R.id.listView3);
         MyAdapter adapter = new MyAdapter(Main3Activity.this, mylist);
         lv3.setAdapter(adapter);
-        lv3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+       /* lv3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -39,7 +40,7 @@ public class Main3Activity extends AppCompatActivity {
                 it.putExtras(b);
                 startActivity(it);
             }
-        });
+        }); */
    }
 
  }
