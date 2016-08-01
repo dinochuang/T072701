@@ -54,7 +54,7 @@ public class MyAdapter extends BaseAdapter
         TextView tv2 = (TextView) v.findViewById(R.id.textView2);
         tv2.setText(data.get(position).phone);
 
-        Button btn = (Button) v.findViewById(R.id.button);
+        Button btn = (Button) v.findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
