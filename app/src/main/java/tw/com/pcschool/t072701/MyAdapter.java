@@ -3,11 +3,14 @@ package tw.com.pcschool.t072701;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +24,12 @@ public class MyAdapter extends BaseAdapter
 {
     Context context;
     ArrayList<Student> data;
+    boolean chk[];
     public MyAdapter(Context c, ArrayList<Student> list)
     {
         context = c;
         data = list;
+        chk = new boolean[data.size()];
     }
 
     @Override
@@ -45,6 +50,9 @@ public class MyAdapter extends BaseAdapter
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int p = position;
+
+        Log.d("2701", "Get View Position:" + p);
+
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.listitem, null);
         ImageView img = (ImageView) v.findViewById(R.id.imageView);
@@ -67,6 +75,16 @@ public class MyAdapter extends BaseAdapter
 
                 it.putExtras(b);
                 context.startActivity(it);
+            }
+        });
+
+
+        CheckBox chk1 = (CheckBox) v.findViewById(R.id.checkBox);
+        chk1.setChecked(chk[p]);
+        chk1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                chk[p] = isChecked;
             }
         });
 
