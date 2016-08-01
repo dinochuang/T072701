@@ -25,9 +25,11 @@ public class MyAdapter extends BaseAdapter
     Context context;
     ArrayList<Student> data;
     boolean chk[];
+    LayoutInflater inflater;
     public MyAdapter(Context c, ArrayList<Student> list)
     {
         context = c;
+        inflater = LayoutInflater.from(context);
         data = list;
         chk = new boolean[data.size()];
     }
@@ -52,18 +54,12 @@ public class MyAdapter extends BaseAdapter
 
         final int p = position;
 
-        Log.d("2701", "Get View Position:" + p);
 
         ViewHolder holder;
-        View v;
-        ImageView img;
-        final TextView tv1;
-        final TextView tv2;
-        Button btn;
         CheckBox chk1;
         if (convertView == null)
         {
-            LayoutInflater inflater = LayoutInflater.from(context);
+
             convertView = inflater.inflate(R.layout.listitem, null);
             holder = new ViewHolder();
             holder.img1 = (ImageView) convertView.findViewById(R.id.imageView);
@@ -77,7 +73,7 @@ public class MyAdapter extends BaseAdapter
         {
             holder = (ViewHolder) convertView.getTag();
         }
-
+        chk1 = (CheckBox) convertView.findViewById(R.id.checkBox);
 
         holder.img1.setImageResource(data.get(position).photoid);
         holder.tv1.setText(data.get(position).name);
@@ -100,11 +96,20 @@ public class MyAdapter extends BaseAdapter
 
 
 
-        holder.chk1.setChecked(chk[p]);
-        holder.chk1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        // chk1.setChecked(chk[p]);
+        // Log.d("2701", "Get View Position:" + p + "  chk[p]:" + chk[p]);
+        holder.chk1.setOnCheckedChangeListener(null);
+        if(chk[p])
+            holder.chk1.setChecked(true);
+        else
+            holder.chk1.setChecked(false);
+
+        chk1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 chk[p] = isChecked;
+                Log.d("2701", "Check Change p:" + p + " isChecked:" + isChecked + " chk[p]:" + chk[p]);
             }
         });
 
