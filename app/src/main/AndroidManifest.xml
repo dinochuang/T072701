@@ -9,7 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
+<<<<<<< HEAD
         <activity android:name=".Main2Activity" />
+=======
+        <activity android:name=".Main2Activity"></activity>
+>>>>>>> 81082061a94a043460790f5ad8c6873aa89f487d
         <activity android:name=".Main3Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
